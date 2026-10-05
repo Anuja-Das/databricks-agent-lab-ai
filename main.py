@@ -17,7 +17,7 @@ load_dotenv()
 
 
 def main():
-    print("Databricks deployed successfully.. hurray!")
+    print("Deployed successfully to Databricks.. hurray!")
 
 
 def main2():
