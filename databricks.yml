@@ -25,7 +25,7 @@ targets:
           environments:
             - environment_key: default
               spec:
-                client: "1"
+                client: "2"
 
           tasks:
             - task_key: run_python
