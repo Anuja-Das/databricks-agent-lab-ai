@@ -42,11 +42,15 @@ def ai_translate(client: WorkspaceClient, text: str, target_language: str) -> st
         wait_timeout="50s",
     )
 
+    statement_id = response.statement_id
+    if not statement_id:
+        raise RuntimeError("No statement_id returned from execute_statement")
+
     terminal = {StatementState.SUCCEEDED, StatementState.FAILED, StatementState.CANCELED, StatementState.CLOSED}
     while response.status.state not in terminal:
         print(f"  Warehouse warming up ({response.status.state})... retrying in 10s")
         time.sleep(10)
-        response = client.statement_execution.get_statement(response.statement_id)
+        response = client.statement_execution.get_statement(statement_id)
 
     if response.status.state != StatementState.SUCCEEDED:
         err = response.status.error
@@ -78,4 +82,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    # python src/databricks_functions/ai_translate_agent.py "Hello, how are you?" French

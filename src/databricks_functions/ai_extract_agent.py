@@ -84,4 +84,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    # python src/databricks_functions/ai_extract_agent.py "Ship to: 42 Elm Street, Boston, MA 02101" street city state zip

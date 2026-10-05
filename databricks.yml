@@ -14,15 +14,16 @@ targets:
         databricks_agent_job:
           name: databricks-agent-job
 
-          job_clusters:
-            - job_cluster_key: my_cluster
-              new_cluster:
-                spark_version: 15.4.x-scala2.12
-                node_type_id: m4.large
-                num_workers: 1
+          # Classic cluster config — disabled: workspace only supports serverless
+          # job_clusters:
+          #   - job_cluster_key: my_cluster
+          #     new_cluster:
+          #       spark_version: 15.4.x-scala2.12
+          #       node_type_id: m4.large
+          #       num_workers: 1
 
           tasks:
             - task_key: run_python
-              job_cluster_key: my_cluster
-              python_task:
+              # job_cluster_key: my_cluster   # uncomment when using classic cluster
+              spark_python_task:
                 python_file: ./main.py
