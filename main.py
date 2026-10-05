@@ -8,7 +8,10 @@ Usage:
 
 import sys
 
-from dotenv import load_dotenv
+try:
+    from dotenv import load_dotenv
+except ImportError:
+    def load_dotenv(): pass
 
 load_dotenv()
 
