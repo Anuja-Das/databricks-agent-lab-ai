@@ -1,0 +1,28 @@
+bundle:
+  name: databricks-agent-lab-ai
+
+targets:
+  dev:
+    mode: development
+    default: true
+
+    workspace:
+      host: https://dbc-28397b78-e659.cloud.databricks.com
+
+    resources:
+      jobs:
+        databricks_agent_job:
+          name: databricks-agent-job
+
+          job_clusters:
+            - job_cluster_key: my_cluster
+              new_cluster:
+                spark_version: 15.4.x-scala2.12
+                node_type_id: m4.large
+                num_workers: 1
+
+          tasks:
+            - task_key: run_python
+              job_cluster_key: my_cluster
+              python_task:
+                python_file: ./main.py

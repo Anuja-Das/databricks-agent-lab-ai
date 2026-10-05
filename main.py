@@ -7,19 +7,20 @@ Usage:
 """
 
 import sys
-from pathlib import Path
 
 from dotenv import load_dotenv
 
 load_dotenv()
 
-sys.path.insert(0, str(Path(__file__).parent / "src"))
-
 
 def main():
+    print("Databricks deployed successfully.. hurray!")
+
+
+def main2():
     if "--local" in sys.argv:
         import pandas as pd
-        from agent import EmployeeAgent
+        from src.agent import EmployeeAgent
 
         idx = sys.argv.index("--local")
         question = sys.argv[idx + 1] if idx + 1 < len(sys.argv) else "how many employees?"
@@ -33,7 +34,7 @@ def main():
         answers = agent.predict(None, pd.DataFrame({"question": [question]}))
         print(f"Answer: {answers[0]}")
     else:
-        from deploy import register_model, deploy_endpoint
+        from src.deploy import register_model, deploy_endpoint
         version = register_model()
         deploy_endpoint(version)
 

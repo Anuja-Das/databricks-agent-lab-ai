@@ -1,0 +1,6 @@
+[tool.poe.tasks]
+test = "pytest"
+lint = "ruff check ."
+bundle-validate = "databricks bundle validate"
+bundle-deploy-dev = "databricks bundle deploy"
+bundle-run-dev = "databricks bundle run databricks_agent_job"

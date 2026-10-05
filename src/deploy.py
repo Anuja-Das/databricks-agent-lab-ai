@@ -8,8 +8,6 @@ Steps this script runs:
 """
 
 import os
-import sys
-from pathlib import Path
 
 import mlflow
 import mlflow.pyfunc
@@ -21,8 +19,7 @@ from databricks.sdk.service.serving import (
     ServedEntityInput,
 )
 
-sys.path.insert(0, str(Path(__file__).parent))
-from agent import EmployeeAgent
+from src.agent import EmployeeAgent
 
 DATABRICKS_HOST   = os.environ["DATABRICKS_HOST"]
 UC_CATALOG        = os.environ.get("UC_CATALOG", "workspace")

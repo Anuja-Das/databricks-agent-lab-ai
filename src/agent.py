@@ -10,7 +10,6 @@ Deploy:      python main.py
 import json
 import os
 import sys
-from pathlib import Path
 
 import mlflow
 import mlflow.pyfunc
@@ -18,9 +17,8 @@ import pandas as pd
 from databricks.sdk import WorkspaceClient
 from openai import OpenAI
 
-sys.path.insert(0, str(Path(__file__).parent))
-from tools import TOOL_DEFINITIONS, dispatch_tool
-from prompts import SYSTEM_PROMPT
+from src.tools import TOOL_DEFINITIONS, dispatch_tool
+from src.prompts import SYSTEM_PROMPT
 
 
 class EmployeeAgent(mlflow.pyfunc.PythonModel):
