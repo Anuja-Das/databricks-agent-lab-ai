@@ -1,6 +1,5 @@
 """
 Entry point for the Databricks Employee Agent project.
-
 Usage:
   python main.py            # deploy the agent to Databricks Model Serving
   python main.py --local    # run the agent locally against a question
